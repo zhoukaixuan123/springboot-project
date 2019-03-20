@@ -1,0 +1,8 @@
+1、项目启动
+  springboot  内置启动  必须引入依赖
+     <!-- jsp 视图支持-->
+            <dependency>
+                <groupId>org.apache.tomcat.embed</groupId>
+                <artifactId>tomcat-embed-jasper</artifactId>
+                <version>9.0.6</version>
+            </dependency>
