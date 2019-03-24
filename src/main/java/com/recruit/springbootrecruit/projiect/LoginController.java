@@ -1,10 +1,13 @@
-package com.recruit.springbootrecruit.projiect.login;
+package com.recruit.springbootrecruit.projiect;
 
+import com.recruit.springbootrecruit.projiect.login.LoginService;
 import com.recruit.springbootrecruit.projiect.util.ImgUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,7 +32,7 @@ public class LoginController {
 
 
     @Autowired
-    private  LoginService loginService;
+    private LoginService loginService;
 
 
     /**
@@ -57,23 +60,23 @@ public class LoginController {
      * @auther: kaixuan
      * @date: 2019/3/17 12:21
      */
-    @RequestMapping("verificationLogin")
+    @RequestMapping(value = "verificationLogin" , method = RequestMethod.POST)
     @ResponseBody
-    public  String   verificationLogin(String  username, String password, HttpServletRequest request,String yzm){
+    public  String   verificationLogin(@RequestParam Map maps){
 
-        Map<String,String> map = new HashMap<>();
-        map.put("USERNAME",username);
-        map.put("PASSWORD",password);
+      Map<String,String> map = new HashMap<>();
+        /*  map.put("STUDYID",username);
+        map.put("PASSWORD",password);*/
         String  login =loginService.verificationLogin(map);
         if("Y".equals(login) ){
             String se =(String)  getSession().getAttribute("checkcode");
-            if(se.equalsIgnoreCase(yzm)){
+         /*   if(se.equalsIgnoreCase(yzm)){
                 getSession().setAttribute("USERNAME",username);
                 getSession().setAttribute("PASSWORD",password);
                 return "Y" ;
             }else {
                 return  "YZM";
-            }
+            }*/
 
         }
         if("PASSWORD".equals(login)){

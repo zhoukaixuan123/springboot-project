@@ -2,15 +2,14 @@
 package com.recruit.springbootrecruit.projiect.util.filter;
 
 import com.recruit.springbootrecruit.projiect.util.SessionUtil;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
 
 
 /**
@@ -26,20 +25,22 @@ import javax.servlet.http.HttpSession;
 public class MyInterceptor  implements HandlerInterceptor {
 
 
+   //  private  final Logger  logger =LoggerFactory.getLogger(MyInterceptor.class);
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
+
         String users = (String) SessionUtil.getSession().getAttribute("USERNAME");
-        System.out.println("拦截器");
+        // logger.info("拦截器输出！！");
         String url = request.getRequestURI();
-        System.out.println("--------请求路径---------"+url);
-             if(users == null){
-                 response.sendRedirect("getLogin");
-                 return false;
-            }else{
-               return true;
-             }
+       // logger.info("--------请求路径---------"+url);
+        if(users == null){
+            response.sendRedirect("getLogin");
+            return false;
+        }else{
+            return true;
+        }
     }
 
     @Override

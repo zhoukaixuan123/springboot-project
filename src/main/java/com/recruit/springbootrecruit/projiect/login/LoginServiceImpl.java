@@ -19,7 +19,7 @@ public class LoginServiceImpl  implements LoginService {
     @Override
     public String verificationLogin(Map<String, String> map) {
         Map<String, String> resultMap = loginMapper.verificationLogin(map);
-        if(map.get("USERNAME").equals(resultMap.get("USER_NAME"))){
+        if(map.get("STUDYID").equals(resultMap.get("STUDY_ID"))){
             if(map.get("PASSWORD").equals(resultMap.get("USER_PASSWORD"))){
                 return "Y";
             }else {

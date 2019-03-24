@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 public class DemoController {
 
     @Autowired
-    private DemoService demoService;
+    private DemoService  demoService;
 
 
 

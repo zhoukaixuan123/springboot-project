@@ -1,5 +1,6 @@
 package com.recruit.springbootrecruit.projiect.index;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -7,13 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @Date: 2019/3/17 21:52
  * @Description:
  *
- *    主页  免
+ *    主页
  */
-@RequestMapping("/index")
+@RequestMapping("index")
+@Controller
 public class IndexController {
 
 
-    @RequestMapping("/getIndex")
+    @RequestMapping("getIndex")
     public String getIndex(){
         return  "index";
     }

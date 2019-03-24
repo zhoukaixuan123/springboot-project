@@ -1,17 +1,22 @@
 
 server:
   port: 8080
-
+  tomcat:   #tomcat 线程数，编码格式  设置
+       uri-encoding: UTF-8
+       max-threads: 1000
+       max-connections: 20000
 spring:
   datasource:
     username: root
     password: 123456
     url: jdbc:mysql://localhost:3306/school?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
     driver-class-name: com.mysql.jdbc.Driver
+
   mvc:
       view:
         prefix: /WEB-INF/views/
         suffix: .jsp
+
 redis:
       database: 0 # Redis数据库索引（默认为0）
       host: localhost # Redis服务器地址
@@ -34,7 +39,6 @@ mybatis:
   type-aliases-package: com.recruit.springbootrecruit
 
 #路径名称按自己需要命名,在WEB-INF下新建文件夹page
-
 
 
 

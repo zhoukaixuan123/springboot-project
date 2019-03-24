@@ -7,6 +7,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <%--title  上添加图片--%>
+    <link href="<%=basePath%>/images/icon.ico" rel="shortcut icon">
     <title>系统登录</title>
     <link href="<%=basePath%>/style/login.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
     <link href="<%=basePath%>/style/demo.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
@@ -86,7 +88,7 @@
                 data: $('#from1').serialize(),
                 success: function (result) {
                     if(result  == "Y"){
-                     window.location.href = "<%=basePath%>index/getIndex";
+                     window.location.href = "<%=basePath%>/index/getIndex";
                         return;
                     }if(result == "YZM"){
                        alert("验证码错误！");
@@ -113,6 +115,7 @@
 
         //获取验证码
         function  getImg(){
+
             $.ajax({
                 type: "POST",//方法类型
                 dataType: "json",//预期服务器返回的数据类型
@@ -122,7 +125,8 @@
                 },
                 error : function(result) {
                     if(result == "N"){
-                        alert("验证码错误")
+                        alert("验证码错误");
+
                     }
 
                 }

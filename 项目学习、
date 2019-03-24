@@ -6,3 +6,11 @@
                 <artifactId>tomcat-embed-jasper</artifactId>
                 <version>9.0.6</version>
             </dependency>
+
+ 2.日志配置
+           springboot   默认提供slf4j接口    使用logback  这个是目前最好的日志输出框架，
+                        如果需要使用log4j  需要自己配置适配器   也就是log4j2的依赖
+           配置日志  有两种方法   一种是logback.xml    和logback-spring.xml第二种更加灵活
+
+
+ 3.AOP   配置日志：   (public * com.recruit.springbootrecruit.projiect.*.*.*(..))")  网上叙述有些模糊  用*  代替子包是可以实现的

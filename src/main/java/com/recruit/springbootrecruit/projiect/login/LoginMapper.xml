@@ -8,9 +8,11 @@
            SELECT
              USER_ID,
              USER_NAME,
-             USER_PASSWORD
+             USER_PASSWORD,
+             STUDY_ID,
+             TEACHER_ID
           FROM USER_LOGIN
-          WHERE (USER_NAME = #{USERNAME}
+          WHERE (STUDY_ID = #{STUDYID}
           or USER_PASSWORD = #{PASSWORD})
     </select>
 </mapper>
