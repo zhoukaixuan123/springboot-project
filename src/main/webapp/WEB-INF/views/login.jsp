@@ -165,7 +165,7 @@
             <form class="registerform"  id="from1">
                 <div class="fm-item">
                     <label for="logonId" class="form-label">学生管理：</label>
-                    <input type="text"  name = "username" value="输入账号" maxlength="100" id="username" class="i-text" ajaxurl="<%=basePath%>images/valid.jsp">
+                    <input type="text"  name = "studyid" value="输入账号" maxlength="100" id="studyid" class="i-text" ajaxurl="<%=basePath%>images/valid.jsp">
                     <div class="ui-form-explain" id="tsy"> </div>
                 </div>
 

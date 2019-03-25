@@ -1,5 +1,6 @@
 package com.recruit.springbootrecruit.projiect.login;
 
+import com.recruit.springbootrecruit.projiect.util.SessionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,16 +19,21 @@ public class LoginServiceImpl  implements LoginService {
 
     @Override
     public String verificationLogin(Map<String, String> map) {
-        Map<String, String> resultMap = loginMapper.verificationLogin(map);
-        if(map.get("STUDYID").equals(resultMap.get("STUDY_ID"))){
-            if(map.get("PASSWORD").equals(resultMap.get("USER_PASSWORD"))){
-                return "Y";
+        User user = loginMapper.verificationLogin(map);
+        if(map.get("studyid").equals(user.getStudy_id())){
+            if(map.get("password").equals(user.getUser_password())){
+                String yzm =(String) SessionUtil.getSession().getAttribute("yzm");
+                if(map.get("yzm").equals(yzm)){
+                    SessionUtil.getSession().setAttribute(user.getStudy_id(),user);
+                    return "Y";
+                }else{
+                    return "YZM";
+                }
             }else {
                 return  "PASSWORD";
             }
-
         }else{
-            return  "USERNAME";
+            return   "USERNAME";
         }
 
     }

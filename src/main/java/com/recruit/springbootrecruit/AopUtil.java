@@ -41,6 +41,8 @@ public class AopUtil {
      * ~ 第四个 * 定义在web包或者子包
      * ~ 第五个 * 任意方法
      * ~ .. 匹配任意数量的参数.
+     *
+     *   扫描Projiect  下的 所有包和类
      */
 
     @Pointcut("execution(public * com.recruit.springbootrecruit.projiect.*.*.*(..))")

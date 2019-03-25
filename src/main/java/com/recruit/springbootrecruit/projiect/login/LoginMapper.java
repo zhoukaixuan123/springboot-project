@@ -1,5 +1,6 @@
 package com.recruit.springbootrecruit.projiect.login;
 
+
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.Map;
@@ -21,7 +22,7 @@ public interface LoginMapper {
      * @auther: kaixuan
      * @date: 2019/3/17 12:23
      */
-     Map<String, String>  verificationLogin(Map<String, String> map);
+    User verificationLogin(Map<String, String> map);
 
 
 

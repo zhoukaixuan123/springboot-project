@@ -1,4 +1,4 @@
-package com.recruit.springbootrecruit.projiect;
+package com.recruit.springbootrecruit.projiect.login;
 
 import com.recruit.springbootrecruit.projiect.login.LoginService;
 import com.recruit.springbootrecruit.projiect.util.ImgUtil;
@@ -64,28 +64,7 @@ public class LoginController {
     @ResponseBody
     public  String   verificationLogin(@RequestParam Map maps){
 
-      Map<String,String> map = new HashMap<>();
-        /*  map.put("STUDYID",username);
-        map.put("PASSWORD",password);*/
-        String  login =loginService.verificationLogin(map);
-        if("Y".equals(login) ){
-            String se =(String)  getSession().getAttribute("checkcode");
-         /*   if(se.equalsIgnoreCase(yzm)){
-                getSession().setAttribute("USERNAME",username);
-                getSession().setAttribute("PASSWORD",password);
-                return "Y" ;
-            }else {
-                return  "YZM";
-            }*/
-
-        }
-        if("PASSWORD".equals(login)){
-            return "PASSWORD" ;
-        }
-        if("USERNAME".equals(login)){
-            return "USERNAME" ;
-        }
-        return "Y" ;
+        return loginService.verificationLogin(maps);
     }
 
 

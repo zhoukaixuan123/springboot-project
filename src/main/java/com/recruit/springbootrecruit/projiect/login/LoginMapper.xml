@@ -4,7 +4,8 @@
 
 
 
-    <select id="verificationLogin" resultType="java.util.HashMap"  parameterType="java.util.HashMap">
+
+    <select id="verificationLogin" resultType="com.recruit.springbootrecruit.projiect.login.User" parameterType="java.util.HashMap">
            SELECT
              USER_ID,
              USER_NAME,
@@ -12,7 +13,7 @@
              STUDY_ID,
              TEACHER_ID
           FROM USER_LOGIN
-          WHERE (STUDY_ID = #{STUDYID}
-          or USER_PASSWORD = #{PASSWORD})
+          WHERE (STUDY_ID = #{studyid}
+          or USER_PASSWORD = #{password})
     </select>
 </mapper>

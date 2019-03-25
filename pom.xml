@@ -73,9 +73,25 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson
+           阿里云  json转换
+        -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.41</version>
+        </dependency>
     </dependencies>
 
+
+
+
+
     <build>
+
+
+
         <!--扫描src  下xml配置文件-->
         <resources>
             <resource>
@@ -96,5 +112,7 @@
             </plugin>
         </plugins>
     </build>
+
+
 
 </project>
