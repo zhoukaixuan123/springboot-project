@@ -1,6 +1,7 @@
 
 package com.recruit.springbootrecruit.projiect.util.filter;
 
+import com.recruit.springbootrecruit.projiect.login.User;
 import com.recruit.springbootrecruit.projiect.util.SessionUtil;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
@@ -31,10 +32,10 @@ public class MyInterceptor  implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
 
-        String users = (String) SessionUtil.getSession().getAttribute("USERNAME");
+        User users = (User)SessionUtil.getSession().getAttribute("user");
         // logger.info("拦截器输出！！");
         String url = request.getRequestURI();
-       // logger.info("--------请求路径---------"+url);
+      System.out.println("--------请求路径---------"+url);
         if(users == null){
             response.sendRedirect("getLogin");
             return false;

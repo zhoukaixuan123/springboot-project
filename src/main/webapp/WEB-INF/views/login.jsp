@@ -14,7 +14,6 @@
     <link href="<%=basePath%>/style/demo.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
     <script type="text/javascript" src="<%=basePath%>/script/jquery1.42.min.js"></script>
     <script type="text/javascript" src="<%=basePath%>/script/jquery.SuperSlide.js"></script>
-    <script type="text/javascript" src="<%=basePath%>/script/Validform_v5.3.2_min.js"></script>
 
     <script>
         $(function(){
@@ -91,6 +90,7 @@
                      window.location.href = "<%=basePath%>/index/getIndex";
                         return;
                     }if(result == "YZM"){
+                        document.getElementById("yzm").value ='';
                        alert("验证码错误！");
                        return;
 
@@ -132,6 +132,10 @@
                 }
             });
         }
+        //刷新验证码 30秒一次
+        setTimeout(function(){
+            shx();  //第一个参数为函数 你可以传入函数名 或一个匿名函数
+        },30000);
         //刷新验证码
         function shx() {
             document.getElementById("validateCodeImg").src="${pageContext.request.contextPath}/login/getImage?"+Math.random();
@@ -164,27 +168,27 @@
 
             <form class="registerform"  id="from1">
                 <div class="fm-item">
-                    <label for="logonId" class="form-label">学生管理：</label>
-                    <input type="text"  name = "studyid" value="输入账号" maxlength="100" id="studyid" class="i-text" ajaxurl="<%=basePath%>images/valid.jsp">
+                    <label for="studyid" class="form-label">学生管理：</label>
+                    <input type="text"  name = "studyid" placeholder="输入账号" maxlength="100" id="studyid" class="i-text"  value="" ajaxurl="<%=basePath%>images/valid.jsp">
                     <div class="ui-form-explain" id="tsy"> </div>
                 </div>
 
                 <div class="fm-item">
-                    <label for="logonId" class="form-label">登陆密码：</label>
+                    <label for="password" class="form-label">登陆密码：</label>
                     <input type="password" placeholder="输入密码"   name = "password" maxlength="100" id="password" class="i-text"  >
                     <div class="ui-form-explain" id="tsy1"></div>
                 </div>
 
                 <div class="fm-item pos-r">
-                    <label for="logonId" class="form-label">验证码</label>
-                    <input type="text" value="输入验证码" maxlength="100" id="yzm" name="yzm" class="i-text yzm" nullmsg="请输入验证码！" >
+                    <label for="yzm" class="form-label">验证码</label>
+                    <input type="text" value="" maxlength="100" id="yzm" name="yzm" class="i-text yzm" placeholder="请输入验证码！" >
                     <div class="ui-form-explain"><img src="${pageContext.request.contextPath}/login/getImage" onclick="shx()" id ="validateCodeImg" class="yzm-img" /></div>
 
                 </div>
 
                 <div class="fm-item">
-                    <label for="logonId" class="form-label"></label>
-                    <input type="button" value="" tabindex="4" id="send-btn"  onclick="getLogin()" class="btn-login">
+                    <label for="send-btn" class="form-label"></label>
+                    <input type="button"   id="send-btn"  onclick="getLogin()" class="btn-login">
                     <div class="ui-form-explain"></div>
                 </div>
 
@@ -195,7 +199,6 @@
     </div>
 
     <div class="bd">
-        <ul>
             <li style="background:url(<%=basePath%>images/theme-pic1.jpg) #CCE1F3 center 0 no-repeat;"><a target="_blank" href="#"></a></li>
             <li style="background:url(<%=basePath%>images/theme-pic2.jpg) #BCE0FF center 0 no-repeat;"><a target="_blank" href="#"></a></li>
         </ul>

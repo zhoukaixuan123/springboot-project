@@ -48,9 +48,7 @@ public class ImgUtil implements Serializable {
         //String random = drawRandomNum((Graphics2D) g,"l");//生成纯字母的验证码图片
         String random = drawRandomNum((Graphics2D) g,createTypeFlag);//根据客户端传递的createTypeFlag标识生成验证码图片
         //7.将随机数存在session中
-       // request.getSession().setAttribute("checkcode", random);
-        //公共session
-        getSession().setAttribute("checkcode", random);
+        SessionUtil.getSession().setAttribute("checkcode", random);
         //8.设置响应头通知浏览器以图片的形式打开
         response.setContentType("image/jpeg");//等同于response.setHeader("Content-Type", "image/jpeg");
         //9.设置响应头控制浏览器不要缓存

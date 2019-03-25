@@ -22,9 +22,9 @@ public class LoginServiceImpl  implements LoginService {
         User user = loginMapper.verificationLogin(map);
         if(map.get("studyid").equals(user.getStudy_id())){
             if(map.get("password").equals(user.getUser_password())){
-                String yzm =(String) SessionUtil.getSession().getAttribute("yzm");
-                if(map.get("yzm").equals(yzm)){
-                    SessionUtil.getSession().setAttribute(user.getStudy_id(),user);
+                String yzm  =(String) SessionUtil.getSession().getAttribute("checkcode");
+                if(map.get("yzm").equalsIgnoreCase(yzm)){
+                    SessionUtil.getSession().setAttribute("user",user);
                     return "Y";
                 }else{
                     return "YZM";
