@@ -93,4 +93,88 @@ public class IndexController {
         return "objectionAspx";
     }
 
+
+
+    /*** 
+    * @Description:  我的报考
+    * @Param: [request] 
+    * @return: java.lang.String 
+    * @Author: zhoukx
+    * @Date: 2019/3/26 
+    */ 
+    @RequestMapping("/getApplication")
+    public String getAppliaction(HttpServletRequest request){
+        request.setAttribute("user",SessionUtil.getSession().getAttribute("user"));
+        return "Application";
+    }
+
+    /***
+     * @Description:  我的成绩
+     * @Param: [request]
+     * @return: java.lang.String
+     * @Author: zhoukx
+     * @Date: 2019/3/26
+     */
+    @RequestMapping("/getScore")
+    public String getScore(HttpServletRequest request){
+        request.setAttribute("user",SessionUtil.getSession().getAttribute("user"));
+        return "Score";
+    }
+
+    /***
+     * @Description:  我的书籍
+     * @Param: [request]
+     * @return: java.lang.String
+     * @Author: zhoukx
+     * @Date: 2019/3/26
+     */
+    @RequestMapping("/getBook")
+    public String getBook(HttpServletRequest request){
+        request.setAttribute("user",SessionUtil.getSession().getAttribute("user"));
+        return "Book";
+    }
+
+
+    /***
+     * @Description:  资料下载
+     *
+     * @Param: [request]
+     * @return: java.lang.String
+     * @Author: zhoukx
+     * @Date: 2019/3/26
+     */
+    @RequestMapping("/getStudentMaterial")
+    public String getStudentMaterial(HttpServletRequest request){
+        request.setAttribute("user",SessionUtil.getSession().getAttribute("user"));
+        return "StudentMaterial";
+    }
+
+    /***
+     * @Description:  学习历程
+     * @Param: [request]
+     * @return: java.lang.String
+     * @Author: zhoukx
+     * @Date: 2019/3/26
+     */
+    @RequestMapping("/getStudentStudyRecordList")
+    public String getStudentStudyRecordList(HttpServletRequest request){
+        request.setAttribute("user",SessionUtil.getSession().getAttribute("user"));
+        return "StudentStudyRecordList";
+    }
+
+
+
+    /***
+     * @Description:  我的财务
+     * @Param: [request]
+     * @return: java.lang.String
+     * @Author: zhoukx
+     * @Date: 2019/3/26
+     */
+    @RequestMapping("/getWdcw")
+    public String getWdcw(HttpServletRequest request){
+        request.setAttribute("user",SessionUtil.getSession().getAttribute("user"));
+        return "wdcw";
+    }
+
 }

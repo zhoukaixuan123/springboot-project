@@ -92,12 +92,11 @@
         }
     </script>
 
-    <script src="../Script/Base.js" type="text/javascript"></script>
-    <script language="javascript" type="text/javascript">
+    <script type="text/javascript" language="javascript">
 
-        function confirmStatus(sid, examtime, stype) {
+        function confirmStatus(pid, ptype) {
             if (confirm("确定确认无误吗？") == true) {
-                senateCenter.modifyStudentScoreStatus(sid, examtime, stype, function (data) {
+                financialInfor.modifyStudentPaymentStatus(pid, ptype, function (data) {
                     var result = $.parseJSON(data);
                     if ((String(result.ok) == "true")) {
                         jBox.alert(result.message, "提示");
@@ -112,8 +111,8 @@
             }
         }
 
-        function submitObjection(objId, examtime) {
-            var mtitle = "成绩有异议";
+        function submitObjection(pid) {
+            var mtitle = "缴费有异议";
             var html = "<div style='padding:10px;'><div style='width:65px; height:120px; float:left;'>异议内容：</div><div style='width:250px; height:120px; float:left;'><textarea id='objeCont' name='objeCont' style='width:250px; height:105px;'></textarea></div></div>";
 
             var submit = function (v, h, f) {
@@ -126,7 +125,7 @@
                     var obj = $.parseJSON(data);
                     var resultObj = false;
                     if (obj.ok) {
-                        senateCenter.modifyStudentScoreStatus(objId, examtime, 3, function (data) {
+                        financialInfor.modifyStudentPaymentStatus(pid, 3, function (data) {
                             var result = $.parseJSON(data);
                             if ((String(result.ok) == "true")) {
                                 jBox.alert("成功提交异议！", "提示");
@@ -148,7 +147,6 @@
 
             $.jBox(html, {title: "提交异议", submit: submit});
         }
-
     </script>
 </head>
 <body>
@@ -238,7 +236,6 @@
                     <div>
                         <a href="<%=basePath%>/index/getStudentStudyRecordList">学习历程</a></div>
                 </div>
-
                 <div class="ta1">
                     <strong>财务中心</strong>
                     <div class="leftbgbt2">
@@ -255,161 +252,241 @@
         </div>
         <div class="rightbox">
 
-            <h2 class="mbx">
-                教务中心 &gt; 我的成绩</h2>
-            <div class="morebt">
-                <ul>
-                    <li><a class="tab1" href="<%=basePath%>/index/getApplication">我的报考</a></li>
-                    <li><a class="tab2" href="<%=basePath%>/index/getScore">我的成绩</a></li>
-                    <li><a class="tab2" href="<%=basePath%>/index/getBook">我的书籍</a></li>
-
-                </ul>
-            </div>
+            <h2 class="mbx">教务中心 &gt; 我的财务</h2>
             <div class="cztable">
-                <div class="tis red">
-                    注：请仔细核对自己的考试成绩，如正确请点击“确定无误”，如不正确请点击“有异议”。
+                <div style="padding-bottom:20px;">
+                    <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                        <tr align="center">
+                            <th width="20%">【邹智】总缴费统计</th>
+                            <th>应缴费用</th>
+                            <th>实缴费用</th>
+
+                            <th>欠缴费用</th>
+                            <th>缴费次数</th>
+                        </tr>
+
+                        <tr>
+                            <td align="center" class="greenfont">&nbsp;</td>
+                            <td align="right" class="greenfont">
+                    <span style="color: #FF0000; font-size: 16px; font-weight: bold;">
+                        7800.00
+                    </span>
+                            </td>
+                            <td align="right" class="greenfont">
+                    <span style="color: #FF0000; font-size: 16px; font-weight: bold;">
+                        3700.00
+                    </span>
+                            </td>
+
+                            <td align="right" class="greenfont">
+                    <span style="color: #FF0000; font-size: 16px; font-weight: bold;">
+                        4100.00
+                    </span>
+                            </td>
+                            <td align="right" class="greenfont">
+                    <span style="color: #FF0000; font-size: 16px; font-weight: bold;">
+                        4
+                    </span>
+                            </td>
+                        </tr>
+
+                    </table>
                 </div>
+                <div>
+                    注：请仔细查看自己的缴费记录，如无误请点击“<span class="red">确定无误</span>”，如不正确请点击“<span class="red">有异议</span>”。 <br/>
+                    其中缴费项目缴费说明相同，相加后的起来对比。应缴总和=实缴总和+欠缴总和 <br/>
+                    <div>
+                        <p>&nbsp;</p>
+                        <p><strong>欠费项目：</strong></p>
+                    </div>
+                    <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                        <tr align="center">
+                            <th>序号</th>
+                            <th>欠费项目</th>
+                            <th>应交金额</th>
+                            <th>已交金额</th>
+                            <th>欠交金额</th>
+                        </tr>
 
-                <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                    <tbody>
-                    <tr>
-                        <th scope="col" style="width: 100px;">&nbsp;
 
-                        </th>
+                        <tr>
+                            <td style="text-align:center">
+            <span style="color: #FF0000; font-size: 16px; font-weight: bold;">
+            1
+            </span>
+                            </td>
+                            <td>
+            <span style="color: #FF0000;  font-size: 16px; font-weight: bold;">
+            毕业工本费
+            </span>
+                            </td>
+                            <td style="text-align:right">
+            <span style="color: #FF0000;  font-size: 16px; font-weight: bold;">
+            100.00
+            </span>
+                            </td>
+                            <td style="text-align:right">
+            <span style="color: #FF0000;  font-size: 16px; font-weight: bold;">
+            0.00
+            </span>
+                            </td>
+                            <td style="text-align:right">
+            <span style="color: #FF0000;  font-size: 16px; font-weight: bold;">
+            100.00
+            </span>
+                            </td>
+                        </tr>
 
-                        <th scope="col" valign="top">
-                            <div class="wzx1">
-                                00015
-                            </div>
-                            <div class="wzx">
-                                英语（二）
-                            </div>
-                        </th>
 
-                        <th scope="col" valign="top">
-                            <div class="wzx1">
-                                03708
-                            </div>
-                            <div class="wzx">
-                                中国近现代史纲要
-                            </div>
-                        </th>
+                        <tr>
+                            <td style="text-align:center">
+            <span style="color: #FF0000; font-size: 16px; font-weight: bold;">
+            2
+            </span>
+                            </td>
+                            <td>
+            <span style="color: #FF0000;  font-size: 16px; font-weight: bold;">
+            论文答辩费
+            </span>
+                            </td>
+                            <td style="text-align:right">
+            <span style="color: #FF0000;  font-size: 16px; font-weight: bold;">
+            300.00
+            </span>
+                            </td>
+                            <td style="text-align:right">
+            <span style="color: #FF0000;  font-size: 16px; font-weight: bold;">
+            0.00
+            </span>
+                            </td>
+                            <td style="text-align:right">
+            <span style="color: #FF0000;  font-size: 16px; font-weight: bold;">
+            300.00
+            </span>
+                            </td>
+                        </tr>
 
-                        <th scope="col" valign="top">
-                            <div class="wzx1">
-                                03709
-                            </div>
-                            <div class="wzx">
-                                马克思主义基本原理概论
-                            </div>
-                        </th>
 
-                        <th scope="col" valign="top">
-                            <div class="wzx1">
-                                00169
-                            </div>
-                            <div class="wzx">
-                                房地产法
-                            </div>
-                        </th>
+                        <tr>
+                            <td style="text-align:center">
+            <span style="color: #FF0000; font-size: 16px; font-weight: bold;">
+            3
+            </span>
+                            </td>
+                            <td>
+            <span style="color: #FF0000;  font-size: 16px; font-weight: bold;">
+            第二年学费、教材费、学杂费
+            </span>
+                            </td>
+                            <td style="text-align:right">
+            <span style="color: #FF0000;  font-size: 16px; font-weight: bold;">
+            3700.00
+            </span>
+                            </td>
+                            <td style="text-align:right">
+            <span style="color: #FF0000;  font-size: 16px; font-weight: bold;">
+            0.00
+            </span>
+                            </td>
+                            <td style="text-align:right">
+            <span style="color: #FF0000;  font-size: 16px; font-weight: bold;">
+            3700.00
+            </span>
+                            </td>
+                        </tr>
 
-                        <th scope="col" valign="top">
-                            <div class="wzx1">
-                                00261
-                            </div>
-                            <div class="wzx">
-                                行政法学
-                            </div>
-                        </th>
 
-                        <th scope="col" valign="top">
-                            <div class="wzx1">
-                                00167
-                            </div>
-                            <div class="wzx">
-                                劳动法
-                            </div>
-                        </th>
+                    </table>
 
-                        <th scope="col" valign="top">
-                            <div class="wzx1">
-                                07945
-                            </div>
-                            <div class="wzx">
-                                企业与公司法学
-                            </div>
-                        </th>
+                    <div>
+                        <p>&nbsp;</p>
+                        <p><strong>自考缴费：</strong></p>
+                    </div>
+                    <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                        <tr align="center">
+                            <th>序号</th>
+                            <th>交费项目</th>
+                            <th>交费金额</th>
 
-                        <th scope="col" valign="top">
-                            <div class="wzx1">
-                                07946
-                            </div>
-                            <div class="wzx">
-                                税法原理
-                            </div>
-                        </th>
+                            <th>交费时间</th>
+                            <th>操作</th>
+                        </tr>
 
-                        <th scope="col" valign="top">
-                            <div class="wzx1">
-                                07947
-                            </div>
-                            <div class="wzx">
-                                金融法概论
-                            </div>
-                        </th>
 
-                        <th scope="col" valign="top">
-                            <div class="wzx1">
-                                06909
-                            </div>
-                            <div class="wzx">
-                                行政诉讼法
-                            </div>
-                        </th>
+                        <tr>
+                            <td style="text-align:center">1</td>
+                            <td>毕业工本费</td>
+                            <td>0.00</td>
 
-                        <th scope="col" valign="top">
-                            <div class="wzx1">
-                                07944
-                            </div>
-                            <div class="wzx">
-                                经济法学原理
-                            </div>
-                        </th>
+                            <td>2013-12-20 04:47</td>
+                            <td>
 
-                        <th scope="col" valign="top">
-                            <div class="wzx1">
-                                07948
-                            </div>
-                            <div class="wzx">
-                                环境法学
-                            </div>
-                        </th>
 
-                        <th scope="col" valign="top">
-                            <div class="wzx1">
-                                10301
-                            </div>
-                            <div class="wzx">
-                                经济法毕业论文
-                            </div>
-                        </th>
+                                <a href="javascript:;"
+                                   onclick="confirmStatus('95c4b378-6de2-41f6-a2cf-6b0e27b562f3', 2)">[确认无误]</a> &nbsp;
+                                &nbsp;
+                                <a href="javascript:;"
+                                   onclick="submitObjection('95c4b378-6de2-41f6-a2cf-6b0e27b562f3')">[有异议]</a>
 
-                        <th scope="col" style="width: 100px;">
-                            操作
-                        </th>
-                    </tr>
+                            </td>
+                        </tr>
 
-                    <tr align="center">
-                        <td colspan="15">
-                            <div style="color: #ff0000; font-weight: bold;">
-                                未找到成绩信息!
-                            </div>
-                        </td>
-                    </tr>
 
-                    </tbody>
-                </table>
+                        <tr>
+                            <td style="text-align:center">2</td>
+                            <td>论文答辩费</td>
+                            <td>0.00</td>
 
+                            <td>2013-12-20 04:47</td>
+                            <td>
+
+
+                                <a href="javascript:;"
+                                   onclick="confirmStatus('4073419c-5dfc-4629-9379-7cecc7e61200', 2)">[确认无误]</a> &nbsp;
+                                &nbsp;
+                                <a href="javascript:;"
+                                   onclick="submitObjection('4073419c-5dfc-4629-9379-7cecc7e61200')">[有异议]</a>
+
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td style="text-align:center">3</td>
+                            <td>第二年学费、教材费、学杂费</td>
+                            <td>0.00</td>
+
+                            <td>2013-12-20 04:47</td>
+                            <td>
+
+
+                                <a href="javascript:;"
+                                   onclick="confirmStatus('bb91b039-004b-4da6-b765-012d19b205f1', 2)">[确认无误]</a> &nbsp;
+                                &nbsp;
+                                <a href="javascript:;"
+                                   onclick="submitObjection('bb91b039-004b-4da6-b765-012d19b205f1')">[有异议]</a>
+
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td style="text-align:center">4</td>
+                            <td>第一年学费、教材费、学杂费</td>
+                            <td>3700.00</td>
+
+                            <td>2013-12-20 04:47</td>
+                            <td>
+
+
+                                <font color="#008000">已审核</font>
+
+                            </td>
+                        </tr>
+
+
+                    </table>
+                </div>
             </div>
 
         </div>

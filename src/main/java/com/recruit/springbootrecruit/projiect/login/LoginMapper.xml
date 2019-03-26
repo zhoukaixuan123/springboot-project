@@ -6,13 +6,26 @@
 
 
     <select id="verificationLogin" resultType="com.recruit.springbootrecruit.projiect.login.User" parameterType="java.util.HashMap">
-           SELECT
-             USER_ID,
-             USER_NAME,
-             USER_PASSWORD,
-             STUDY_ID,
-             TEACHER_ID
-          FROM USER_LOGIN
+         SELECT USER_ID,
+       USER_NAME,
+       USER_PASSWORD,
+       STUDY_ID,
+       TEACHER_ID,
+       USER_SEX,
+       USER_KJH,
+       SCHOOL,
+       USER_ZY,
+       USER_DATE,
+       USER_CC,
+       ZT,
+       PHONE,
+       EMAIL,
+       QQ,
+       ADDRESS,
+       TWO_PHONE,
+       IDCARD,
+       SFZK
+    FROM USER_LOGIN
           WHERE (STUDY_ID = #{studyid}
           or USER_PASSWORD = #{password})
     </select>
