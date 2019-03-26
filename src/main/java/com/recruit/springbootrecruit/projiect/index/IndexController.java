@@ -44,8 +44,8 @@ public class IndexController {
      * @date: 2019/3/26 17:42
      */
     @RequestMapping("/getStudyMessage")
-    public String getStudyMessage(){
-
+    public String getStudyMessage(HttpServletRequest request){
+        request.setAttribute("user",SessionUtil.getSession().getAttribute("user"));
         return "indexStudyMessage" ;
     }
 
@@ -60,7 +60,8 @@ public class IndexController {
      * @date: 2019/3/26 17:56
      */
     @RequestMapping("/getClassAspk")
-    public String  getClassAspk(){
+    public String  getClassAspk(HttpServletRequest request){
+        request.setAttribute("user",SessionUtil.getSession().getAttribute("user"));
         return "classInfoAspx";
     }
     /**
@@ -73,8 +74,23 @@ public class IndexController {
      * @date: 2019/3/26 18:00
      */
     @RequestMapping("getShortmessage")
-    public String  getShortmessage(){
+    public String  getShortmessage(HttpServletRequest request){
+        request.setAttribute("user",SessionUtil.getSession().getAttribute("user"));
         return  "shortmessage";
+    }
+
+    
+    /*** 
+    * @Description:   我的异议页面
+    * @Param: [] 
+    * @return: java.lang.String 
+    * @Author: zhoukx
+    * @Date: 2019/3/26 
+    */ 
+    @RequestMapping("/getObjectionAspx")
+    public String  getObjectionAspx(HttpServletRequest request){
+        request.setAttribute("user",SessionUtil.getSession().getAttribute("user"));
+        return "objectionAspx";
     }
 
 }

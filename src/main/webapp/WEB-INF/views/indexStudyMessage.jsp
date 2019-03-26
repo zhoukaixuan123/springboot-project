@@ -132,7 +132,7 @@
                             自考</option>
                         
                     </select>
-                    910513201419学员：邹智，欢迎您！ <a href="Index.aspx.html">我的信息</a> <a href="../User/StudentInfor/systemMsge.aspx.html">
+                    ${user.study_id}学员： ${user.user_name}，欢迎您！ <a href="Index.aspx.html">我的信息</a> <a href="../User/StudentInfor/systemMsge.aspx.html">
                         通知</a> <a href="../User/Account/ChangePasswd.aspx.html">密码修改</a> <a onclick="loginOut()"
                             href="javascript:">安全退出</a>
                 </div>
@@ -217,9 +217,9 @@
 <ul id="ulStudMsgHeadTab">
     <li><a class="tab2" onclick="" href="#">个人资料</a> </li>
     <li><a class="tab2" onclick="" href="<%=basePath%>/index/getClassAspk">班级信息</a></li>
-    <li><a class="tab2" onclick="" href="<%=basePath%>/index/getClassAspk">短信息</a></li>
-    <li><a class="tab2" onclick="" href="../User/StudentInfor/systemMsge.aspx.html">通知<span style="color:#ff0000; padding-left:5px;" id="unreadSysMsgCount"></span></a></li>
-    <li><a class="tab2" onclick="" href="Objection.aspx">我的异议</a></li>
+    <li><a class="tab2" onclick="" href="<%=basePath%>/index/getShortmessage">短信息</a></li>
+    <li><a class="tab2" onclick="" href="<%=basePath%>/index/getClassAspk">通知<span style="color:#ff0000; padding-left:5px;" id="unreadSysMsgCount"></span></a></li>
+    <li><a class="tab2" onclick="" href="<%=basePath%>/index/getObjectionAspx">我的异议</a></li>
 </ul>
 
 </div>
@@ -302,7 +302,7 @@
         </div>
         <div class="footer">
             <p>
-                &copy;copyright 2012 广博教育 csgb.net 版权所有 站长统计</p>
+                &copy;copyright 2012 凯旋 csgb.net 版权所有 站长统计</p>
         </div>
     </div>
 </body>

@@ -1,15 +1,19 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>
 	学生信息管理平台
-</title><link href="../../Style/StudentStyle.css" rel="stylesheet" type="text/css" /><link href="../../Script/jBox/Skins/Blue/jbox.css" rel="stylesheet" type="text/css" /><link href="../../Style/ks.css" rel="stylesheet" type="text/css" />
-    <script src="../../Script/jBox/jquery-1.4.2.min.js" type="text/javascript"></script>
-    <script src="../../Script/jBox/jquery.jBox-2.3.min.js" type="text/javascript"></script>
-    <script src="../../Script/jBox/i18n/jquery.jBox-zh-CN.js" type="text/javascript"></script>
-    <script src="../../Script/Common.js" type="text/javascript"></script>
-    <script src="../../Script/Data.js" type="text/javascript"></script>
+</title><link href="<%=basePath%>/style/StudentStyle.css" rel="stylesheet" type="text/css" /><link href="../Script/jBox/Skins/Blue/jbox.css" rel="stylesheet" type="text/css" /><link href="../Style/ks.css" rel="stylesheet" type="text/css" />
+    <script src="<%=basePath%>/script/jBox/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <script src="<%=basePath%>/script/jBox/jquery.jBox-2.3.min.js" type="text/javascript"></script>
+    <script src="<%=basePath%>/script/jBox/i18n/jquery.jBox-zh-CN.js" type="text/javascript"></script>
+    <script src="<%=basePath%>/script/Common.js" type="text/javascript"></script>
+    <script src="<%=basePath%>/script/Data.js" type="text/javascript"></script>>
     <script type="text/javascript">
         $().ready(function () {
             setStudMsgHeadTabCheck();
@@ -227,11 +231,11 @@
     
 
 <ul id="ulStudMsgHeadTab">
-    <li><a class="tab2" onclick="" href="../../MyInfo/Index.aspx.html">个人资料</a> </li>
-    <li><a class="tab2" onclick="" href="../../MyInfo/ClassInfo.aspx.html">班级信息</a></li>
-    <li><a class="tab1" onclick="" href="../User/StudentInfor/Letter.aspx.html">短信息</a></li>
-    <li><a class="tab2" onclick="" href="systemMsge.aspx.html">通知<span style="color:#ff0000; padding-left:5px;" id="unreadSysMsgCount"></span></a></li>
-    <li><a class="tab2" onclick="" href="../../MyInfo/Objection.aspx.html">我的异议</a></li>
+    <li><a class="tab2" onclick="" href="#">个人资料</a> </li>
+    <li><a class="tab2" onclick="" href="<%=basePath%>/index/getClassAspk">班级信息</a></li>
+    <li><a class="tab2" onclick="" href="<%=basePath%>/index/getShortmessage">短信息</a></li>
+    <li><a class="tab2" onclick="" href="<%=basePath%>/index/getClassAspk">通知<span style="color:#ff0000; padding-left:5px;" id="unreadSysMsgCount"></span></a></li>
+    <li><a class="tab2" onclick="" href="<%=basePath%>/index/getObjectionAspx">我的异议</a></li>
 </ul>
 
 </div>

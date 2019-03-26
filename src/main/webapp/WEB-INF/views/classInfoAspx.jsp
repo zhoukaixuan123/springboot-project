@@ -171,16 +171,16 @@
                     </div>
                     <div class="cdlist">
                         <div>
-                            <a href="Index.aspx.html">我的信息</a></div>
+                            <a href="<%=basePath%>/index/getClassAspk">我的信息</a></div>
                         <div>
                             <a href="ClassInfo.aspx.html">班级信息 </a>
                         </div>
                         <div>
-                            <a href="../User/StudentInfor/Letter.aspx.html">短信息</a></div>
+                            <a href="<%=basePath%>/index/getShortmessage">短信息</a></div>
                         <div>
-                            <a href="../User/StudentInfor/systemMsge.aspx.html">学院通知</a></div>
+                            <a href="<%=basePath%>/index/getClassAspk">通知</a></div>
                         <div>
-                            <a href="Objection.aspx.html">我的异议</a></div>
+                            <a href="<%=basePath%>/index/objectionAspx">我的异议</a></div>
                     </div>
                     <div class="ta1">
                         <strong>教务中心</strong>
@@ -229,11 +229,11 @@
     
 
 <ul id="ulStudMsgHeadTab">
-    <li><a class="tab2" onclick="" href="Index.aspx.html">个人资料</a> </li>
-    <li><a class="tab2" onclick="" href="ClassInfo.aspx.html">班级信息</a></li>
-    <li><a class="tab2" onclick="" href="../User/StudentInfor/Letter.aspx.html">短信息</a></li>
-    <li><a class="tab2" onclick="" href="../User/StudentInfor/systemMsge.aspx.html">通知<span style="color:#ff0000; padding-left:5px;" id="unreadSysMsgCount"></span></a></li>
-    <li><a class="tab2" onclick="" href="Objection.aspx.html">我的异议</a></li>
+    <li><a class="tab2" onclick="" href="#">个人资料</a> </li>
+    <li><a class="tab2" onclick="" href="<%=basePath%>/index/getClassAspk">班级信息</a></li>
+    <li><a class="tab2" onclick="" href="<%=basePath%>/index/getShortmessage">短信息</a></li>
+    <li><a class="tab2" onclick="" href="<%=basePath%>/index/getClassAspk">通知<span style="color:#ff0000; padding-left:5px;" id="unreadSysMsgCount"></span></a></li>
+    <li><a class="tab2" onclick="" href="<%=basePath%>/index/getObjectionAspx">我的异议</a></li>
 </ul>
 
 </div>
