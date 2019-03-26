@@ -81,7 +81,7 @@
                     </div>
                     <div class="cdlist">
                         <div>
-                            <a href="MyInfo/Index.aspx.html">我的信息</a></div>
+                            <a href="<%=basePath%>/index/getStudyMessage">我的信息</a></div>
                         <div>
                             <a href="MyInfo/ClassInfo.aspx.html">班级信息 </a>
                         </div>
