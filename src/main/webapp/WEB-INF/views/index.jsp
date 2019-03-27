@@ -11,7 +11,7 @@
         学生信息管理系统模板 - 源码之家
     </title>
     <link href="<%=basePath%>/style/StudentStyle.css" rel="stylesheet" type="text/css"/>
-    <link href="<%=basePath%>//script/jbox/skins/blue/jbox.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>//script/jbox/Skins/Blue/jbox.css" rel="stylesheet" type="text/css"/>
     <link href="<%=basePath%>//style/ks.css" rel="stylesheet" type="text/css"/>
     <script src="<%=basePath%>/script/jbox/jquery-1.4.2.min.js" type="text/javascript"></script>
     <script src="<%=basePath%>/script/jbox/jquery.jBox-2.3.min.js" type="text/javascript"></script>

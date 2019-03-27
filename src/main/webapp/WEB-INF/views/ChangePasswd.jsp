@@ -110,17 +110,17 @@
                 $.jBox.tip("新密码两次输入不一致！", 'error');
                 return false;
             }
+            $.ajax({
+                url: "<%=basePath%>/update/updatePassword",
+                data:$("#from1").serialize(),
+                type: "POST",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                success: function () {
 
-            studentAccount.changePassword(oldPwd, newPwd, function (data) {
-                var obj = $.parseJSON(data);
-                if (obj.ok) {
-                    jBox.alert(obj.message, "提示");
-                    setTimeout(function () {
-                        window.location.reload();
-                    }, 1500);
-                }
-                else {
-                    jBox.tip(obj.message, 'error');
+                    window.location.href ="<%=basePath%>/index/getIndex";
+                },
+                error: function (result) {
+                    $.jBox.tip("修改密码失败！", 'error');
                 }
             });
         }
@@ -241,9 +241,10 @@
 
             <h2 class="mbx">我的信息 &gt; 密码修改</h2>
             <div class="cztable">
+                <form id="from1"  method="post">
                 <table border="0" cellspacing="0" cellpadding="0" width="500px" style="margin:30px auto 0px auto;">
                     <tr align="center">
-                        <<input type="hidden" name="study_id" value ="${user.study_id}">
+                        <input type="hidden" name="study_id" value ="${user.study_id}">
                         <th style="width:20%; text-align:left;">旧密码：</th>
                         <td style="width:70%; text-align:left;"><input id="txtOldPwd" value="" type="password"
                                                                        class="input_2 txtinput1" name="oldPassword"/></td>
@@ -265,6 +266,7 @@
                         </td>
                     </tr>
                 </table>
+                </form>
             </div>
 
         </div>
