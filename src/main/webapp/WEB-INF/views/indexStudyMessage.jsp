@@ -51,14 +51,8 @@
         //退出
         function loginOut() {
             if (confirm("确定退出吗？")) {
-                StudentLogin.loginOut(function (data) {
-                    if (data == "true") {
-                        window.location = "/Login.aspx";
-                    }
-                    else {
-                        jBox.alert("退出失败！", "提示", new {buttons: {"确定": true}});
-                    }
-                });
+
+                        window.location = "<%=basePath%>/login/getLogin";
             }
         }
 
@@ -142,10 +136,11 @@
                     </option>
 
                 </select>
-                ${user.study_id}学员： ${user.user_name}，欢迎您！ <a href="Index.aspx.html">我的信息</a> <a
-                    href="../User/StudentInfor/systemMsge.aspx.html">
-                通知</a> <a href="../User/Account/ChangePasswd.aspx.html">密码修改</a> <a onclick="loginOut()"
-                                                                                    href="javascript:">安全退出</a>
+                ${user.study_id}学员： ${user.user_name}，欢迎您！
+                <a href="<%=basePath%>/index/getIndex">我的信息</a>
+                <a href="<%=basePath%>/index/getClassAspk">通知</a>
+                <a href="<%=basePath%>/index/getChangePasswd">密码修改</a>
+                <a onclick="loginOut()" href="javascript:">安全退出</a>
             </div>
             <div class="blog_nav">
                 <ul>

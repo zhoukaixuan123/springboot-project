@@ -177,4 +177,20 @@ public class IndexController {
         return "wdcw";
     }
 
+
+
+    
+    /*** 
+    * @Description:   返回密码修改页面
+    * @Param: [request] 
+    * @return: java.lang.String 
+    * @Author: zhoukx
+    * @Date: 2019/3/27 
+    */ 
+    @RequestMapping("/getChangePasswd")
+    public String getChangePasswd(HttpServletRequest request){
+        request.setAttribute("user",SessionUtil.getSession().getAttribute("user"));
+        return  "ChangePasswd";
+    }
+
 }
