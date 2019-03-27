@@ -15,9 +15,9 @@
     <link href="<%=basePath%>/style/StudentStyle.css" rel="stylesheet" type="text/css"/>
     <link href="<%=basePath%>/script/jbox/Skins/Blue/jbox.css" rel="stylesheet" type="text/css"/>
     <link href="<%=basePath%>/style/ks.css" rel="stylesheet" type="text/css"/>
-    <script src="<%=basePath%>/script/jBox/jquery-1.4.2.min.js" type="text/javascript"></script>
-    <script src="<%=basePath%>/script/jBox/jquery.jBox-2.3.min.js" type="text/javascript"></script>
-    <script src="<%=basePath%>/script/jBox/i18n/jquery.jBox-zh-CN.js" type="text/javascript"></script>
+    <script src="<%=basePath%>/script/jbox/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <script src="<%=basePath%>/script/jbox/jquery.jBox-2.3.min.js" type="text/javascript"></script>
+    <script src="<%=basePath%>/script/jbox/i18n/jquery.jBox-zh-CN.js" type="text/javascript"></script>
     <script src="<%=basePath%>/script/Common.js" type="text/javascript"></script>
     <script src="<%=basePath%>/script/Data.js" type="text/javascript"></script>
     <script src="<%=basePath%>/script/changeOption.js" type="text/javascript"></script>
@@ -53,14 +53,7 @@
         //退出
         function loginOut() {
             if (confirm("确定退出吗？")) {
-                StudentLogin.loginOut(function (data) {
-                    if (data == "true") {
-                        window.location = "/Login.aspx";
-                    }
-                    else {
-                        jBox.alert("退出失败！", "提示", new {buttons: {"确定": true}});
-                    }
-                });
+                window.location = "<%=basePath%>/login/getLogin";
             }
         }
 
@@ -250,20 +243,21 @@
             <div class="cztable">
                 <table border="0" cellspacing="0" cellpadding="0" width="500px" style="margin:30px auto 0px auto;">
                     <tr align="center">
+                        <<input type="hidden" name="study_id" value ="${user.study_id}">
                         <th style="width:20%; text-align:left;">旧密码：</th>
                         <td style="width:70%; text-align:left;"><input id="txtOldPwd" value="" type="password"
-                                                                       class="input_2 txtinput1"/></td>
+                                                                       class="input_2 txtinput1" name="oldPassword"/></td>
                     </tr>
                     <tr align="center">
                         <th style="width:20%; text-align:left;">新密码：</th>
                         <td style="width:70%; text-align:left;"><input id="txtNewPwd" value="" type="password"
-                                                                       class="input_2 txtinput1"/>&nbsp;&nbsp;6~16个字符，区分大小写
+                                                                       class="input_2 txtinput1" name="newPasswordOne"/>&nbsp;&nbsp;6~16个字符，区分大小写
                         </td>
                     </tr>
                     <tr align="center">
                         <th style="width:20%; text-align:left;">确认新密码：</th>
                         <td style="width:70%; text-align:left;"><input id="txtConfirmNewPwd" value="" type="password"
-                                                                       class="input_2 txtinput1"/></td>
+                                                                       class="input_2 txtinput1" name="newPassword"/></td>
                     </tr>
                     <tr>
                         <td colspan="2" style="text-align:center;"><input type="submit" id="btnSubmit" value="确认修改"
