@@ -3,12 +3,11 @@ package com.recruit.springbootrecruit.projiect.editPassword;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Map;
 
 /*
@@ -17,7 +16,7 @@ import java.util.Map;
  * @date 2019/3/27$
  * @description  修改密码等个人信息
  */
-@RestController
+
 @RequestMapping("/update")
 public class EditPasswordController {
 
@@ -32,8 +31,21 @@ public class EditPasswordController {
     * @Date: 2019/3/27 
     */ 
     @RequestMapping(value ="/updatePassword",method=RequestMethod.POST )
+    @ResponseBody
     public String UpdatePassword(HttpServletRequest request,@RequestParam Map map){
         editPasswordService.UpdatePassword(map);
         return "";
+    }
+
+    @RequestMapping(value ="/updatePhone",method=RequestMethod.POST )
+    public String UpdatePhone(@RequestParam Map map, HttpServletResponse response,HttpServletRequest request){
+        request.setAttribute("user",editPasswordService.UpdatePhone(map));
+        try {
+            response.sendRedirect("/index/getStudyMessage");
+        }catch (IOException e){
+
+        }
+
+        return  "";
     }
 }

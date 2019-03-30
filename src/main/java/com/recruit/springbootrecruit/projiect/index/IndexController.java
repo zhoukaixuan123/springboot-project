@@ -1,7 +1,10 @@
 package com.recruit.springbootrecruit.projiect.index;
 
+import com.recruit.springbootrecruit.projiect.editPassword.EditPasswordService;
+import com.recruit.springbootrecruit.projiect.login.User;
 import com.recruit.springbootrecruit.projiect.util.JSONStirng;
 import com.recruit.springbootrecruit.projiect.util.SessionUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -18,6 +21,9 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class IndexController {
 
+
+    @Autowired
+    private IndexService indexService;
 
 
     /*** 
@@ -45,7 +51,10 @@ public class IndexController {
      */
     @RequestMapping("/getStudyMessage")
     public String getStudyMessage(HttpServletRequest request){
-        request.setAttribute("user",SessionUtil.getSession().getAttribute("user"));
+       User user =  (User) SessionUtil.getSession().getAttribute("user");
+       String  study_id = user.getStudy_id();
+       User user1s =  indexService.selectUser(study_id);
+       request.setAttribute("user",user1s);
         return "indexStudyMessage" ;
     }
 

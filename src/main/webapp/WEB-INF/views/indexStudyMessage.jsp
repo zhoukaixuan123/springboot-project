@@ -93,18 +93,36 @@
             var html = "<div style='padding:10px;'><div style='width:65px; height:120px; float:left;'>修改的地方：</div><div style='width:250px; height:120px; float:left;'><textarea id='objeCont' name='objeCont' style='width:250px; height:105px;'></textarea></div></div>";
 
             var submit = function (v, h, f) {
+
                 if (f.objeCont == '' || f.objeCont.length > 80) {
                     $.jBox.tip("请您输入有修改的地方，且不超过80个字！", 'error', {focusId: "objeCont"}); // 关闭设置 objeCont 为焦点
                     return false;
                 }
-
+               /* alert(f.objeCont+"9")
                 StudentCompain.insertCompain('', mtitle, 5, f.objeCont, function (data) {
+                    alert(1111)
+                    alert(data)
                     var obj = $.parseJSON(data);
                     var resultObj = false;
                     if (obj.ok) {
                         $.jBox.tip("成功提交联系方式的修改邮件！");
                     }
-                });
+                });*/
+
+               $.ajax({
+                   url:"<%=basePath%>/update/updatePhone",
+                   type:"POST",
+                   data:{idcard:'${user.idcard}',phone:f.objeCont},
+                   dataType:"json",
+                   async:true,
+                   success:function () {
+                       window.location.reload();
+                       $.jBox.tip("成功提交联系方式的修改邮件！");
+                   }
+               });
+
+
+
             };
 
             $.jBox(html, {title: "联系方式修改的邮件", submit: submit});
