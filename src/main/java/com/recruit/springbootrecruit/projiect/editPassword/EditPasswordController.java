@@ -16,7 +16,7 @@ import java.util.Map;
  * @date 2019/3/27$
  * @description  修改密码等个人信息
  */
-
+@Controller
 @RequestMapping("/update")
 public class EditPasswordController {
 
@@ -37,15 +37,10 @@ public class EditPasswordController {
         return "";
     }
 
-    @RequestMapping(value ="/updatePhone",method=RequestMethod.POST )
-    public String UpdatePhone(@RequestParam Map map, HttpServletResponse response,HttpServletRequest request){
-        request.setAttribute("user",editPasswordService.UpdatePhone(map));
-        try {
-            response.sendRedirect("/index/getStudyMessage");
-        }catch (IOException e){
-
-        }
-
-        return  "";
+    @RequestMapping(value ="updatePhone" )
+    @ResponseBody
+    public String UpdatePhone(@RequestParam Map map){
+        editPasswordService.UpdatePhone(map);
+        return  "Y";
     }
 }

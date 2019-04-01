@@ -90,7 +90,7 @@
     <script type="text/javascript">
         function submitMail() {
             var mtitle = "联系方式有修改";
-            var html = "<div style='padding:10px;'><div style='width:65px; height:120px; float:left;'>修改的地方：</div><div style='width:250px; height:120px; float:left;'><textarea id='objeCont' name='objeCont' style='width:250px; height:105px;'></textarea></div></div>";
+            var html = "<div style='padding:10px;'><div style='width:65px; height:120px; float:left;'>修改手机号：</div><div style='width:250px; height:120px; float:left;'><textarea id='objeCont' name='objeCont' style='width:250px; height:105px;'></textarea></div></div>";
 
             var submit = function (v, h, f) {
 
@@ -113,11 +113,12 @@
                    url:"<%=basePath%>/update/updatePhone",
                    type:"POST",
                    data:{idcard:'${user.idcard}',phone:f.objeCont},
-                   dataType:"json",
-                   async:true,
-                   success:function () {
+                   dataType:"TEXT",
+                   success: function (data) {
                        window.location.reload();
-                       $.jBox.tip("成功提交联系方式的修改邮件！");
+                   },
+                   error:function(data) {
+                       $.jBox.tip("修改失败！请联系管理员！");
                    }
                });
 
